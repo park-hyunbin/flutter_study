@@ -1,20 +1,41 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
+  return runApp(
     MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.lightBlue[100],
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text('I Am Rich'),
-          backgroundColor : Colors.lightBlue[200],
+          title: Text('My History', style: TextStyle(color: Colors.black45)),
+          backgroundColor: Colors.grey,
         ),
-        body : const Center(
-          child: Image(
-            image : AssetImage('images/snowball.png'),
-          ),
-        ),
+        body: MapPage(),
       ),
     ),
   );
 }
+
+class MapPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image(
+                image: AssetImage('images/map.png'),
+              ),
+            ),
+          ),
+          Text('What did you do?',
+              style : TextStyle(color : Colors.black)),
+        ],
+
+      ),
+    );
+  }
+}
+
+
