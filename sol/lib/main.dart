@@ -16,37 +16,34 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title:
-            Text('What did you do',
-              textAlign : TextAlign.center,
-              style : TextStyle(color : Colors.black45)),
-          backgroundColor : Colors.white
-
-        ),
-        body: Center(
-          child : _buildlist()
-        )
-      ),
+      home:
+      Scaffold(
+          appBar: AppBar(
+              leading: Icon(Icons.perm_identity,
+                  color: Colors.green,
+              ),
+              title: Text('My History',
+                  style: TextStyle(fontSize : 30, color: Colors.black45)),
+              backgroundColor: Colors.white),
+          body: Center(child: _buildlist())),
     );
   }
 }
+
 Widget _buildlist() => ListView(
-  children: [
-    _tile("You've achieve all your checklist","+20cents"),
-    _tile("You've achieve all your checklist","+20cents"),
-    _tile("You've achieve all your checklist","+20cents"),
-    _tile("You've achieve all your checklist","+20cents"),
-    _tile("You've achieve all your checklist","+20cents"),
-  ],
-);
+      children: [
+        _tile("You've achieve all your checklist", "+20cents"),
+        _tile("You're post became best post", "+10cents"),
+        _tile("You've achieve all your checklist", "+20cents"),
+        _tile("You've achieve all your checklist", "+20cents"),
+        _tile("You've achieve all your checklist", "+20cents"),
+      ],
+    );
 ListTile _tile(String title, String subtitle) => ListTile(
-  title : Text(title, style : TextStyle(color : Colors.black)),
-  subtitle : Text(subtitle, style : TextStyle(color : Colors.green)),
-  leading :
-  ClipRRect(
-    borderRadius: BorderRadius.circular(100),
-    child : Image.asset('images/tree1.png'),
-  ),
-);
+      title: Text(title, style: TextStyle(color: Colors.black)),
+      subtitle: Text(subtitle, style: TextStyle(color: Colors.green)),
+      leading: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Image.asset('images/tree1.png'),
+      ),
+    );
