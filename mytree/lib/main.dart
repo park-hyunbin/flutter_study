@@ -21,25 +21,24 @@ class MyApp extends StatelessWidget {
         body: Stack(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(6.0),
+              padding: const EdgeInsets.all(4.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.green,
-                ),
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(15.0)),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                child: MapSample(),
-              ),
-            ),
+                padding: const EdgeInsets.all(11.0),
+                child: Container(
+                  child: MapSample(),
+                )),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Align(
                 alignment: Alignment.topRight,
                 child: FloatingActionButton(
-                  onPressed: _treelistview,
+                  onPressed: _tree,
                   materialTapTargetSize: MaterialTapTargetSize.padded,
                   backgroundColor: Colors.green,
                   child: const Icon(Icons.search, size: 36.0),
@@ -53,20 +52,19 @@ class MyApp extends StatelessWidget {
   }
 }
 
-void _treelistview() {
-  ListView.builder(itemBuilder: (context, index) {
-    return ListTile(
-      leading: Image.asset('image/100%.png'),
-      title: Text('Seoul, Korea'),
-      subtitle: Text('#1'),
-    );
-  });
+void _tree() {
+AlertDialog(
+  title: Text('Seoul,Korea'),
+  backgroundColor: Colors.green,);
 }
 
 class MapSample extends StatefulWidget {
   @override
   State<MapSample> createState() => MapSampleState();
-}
+  }
+
+
+
 
 class MapSampleState extends State<MapSample> {
   Completer<GoogleMapController> _controller = Completer();
@@ -97,6 +95,8 @@ class MapSampleState extends State<MapSample> {
       ),
     };
   }
+
+
 
   @override
   Widget build(BuildContext context) {
