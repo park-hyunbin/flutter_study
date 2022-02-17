@@ -18,21 +18,18 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('My tree'),
         ),
-        body: Stack(
+        body: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.all(11.0),
               child: Container(
                 decoration: BoxDecoration(
-                    color: Colors.green,
+                    color: Color(0xff41B06B),
                     borderRadius: BorderRadius.circular(15.0)),
+                child: MapSample(),
               ),
             ),
-            Padding(
-                padding: const EdgeInsets.all(11.0),
-                child: Container(
-                  child: MapSample(),
-                )),
+            _buildlist(),
           ],
         ),
       ),
@@ -40,19 +37,22 @@ class MyApp extends StatelessWidget {
   }
 }
 
-void _tree() {
-AlertDialog(
-  title: Text('Seoul,Korea'),
-  backgroundColor: Colors.green,);
-}
+Widget _buildlist() => ListView(
+    children: [
+      _tree('Seoul, Korea', '220213'),
+      _tree('Daejeon, Korea', '220214'),
+    ]
+);
+
+ListTile _tree(String title, String subtitle) => ListTile(
+  title: Text(title),
+  subtitle: Text(subtitle),
+);
 
 class MapSample extends StatefulWidget {
   @override
   State<MapSample> createState() => MapSampleState();
-  }
-
-
-
+}
 
 class MapSampleState extends State<MapSample> {
   Completer<GoogleMapController> _controller = Completer();
@@ -61,7 +61,6 @@ class MapSampleState extends State<MapSample> {
     target: LatLng(37.566, 126.97),
     zoom: 11.5,
   );
-
 
   Set<Marker> _createMarker() {
     return {
