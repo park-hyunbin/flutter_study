@@ -1,33 +1,54 @@
 import 'package:flutter/material.dart';
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+void main() => runApp(MyDrawer());
+
+class MyDrawer extends StatefulWidget {
+  @override
+  _MyDrawerState createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-    ),
-    home : Scaffold(
-      body : Center(
-        child : _buildlist()
-      )
-    ),
+      home: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                accountName: Text(
+                  '박현빈',
+                  style: TextStyle(color: Colors.white),
+                ),
+                accountEmail: Text(
+                  'choiemh@naver.com',
+                  style: TextStyle(color: Colors.white),
+                ),
+                decoration: BoxDecoration(
+                  color: Color(0xff41B06B),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              ListTile(
+                title: Text('Seoul, Korea'),
+                subtitle: Text('220213'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Daejeon, Korea'),
+                subtitle: Text('220214'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
-
-Widget _buildlist() => ListView(
-  children: [
-    _tree('Seoul, Korea', '220213'),
-    _tree('Daejeon, Korea', '220214')
-  ]
-);
-
-ListTile _tree(String title, String subtitle) => ListTile(
-  title: Text(title),
-  subtitle: Text(subtitle),
-  leading : Image.asset('images')
-  );
