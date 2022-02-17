@@ -19,17 +19,43 @@ class MyApp extends StatelessWidget {
           title: Text('My tree'),
         ),
         body: Column(
-          children: <Widget>[
+          children: [
             Padding(
               padding: const EdgeInsets.all(11.0),
               child: Container(
                 decoration: BoxDecoration(
-                    color: Color(0xff41B06B),
-                    borderRadius: BorderRadius.circular(15.0)),
-                child: MapSample(),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8.0),
+                  border: Border.all(
+                    color: Color(0xff81dfa4),
+                    width: 3,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    height: 400,
+                    child: MapSample(),
+                  ),
+                ),
               ),
             ),
-            _buildlist(),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(11.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8.0),
+                    border: Border.all(
+                      color: Color(0xff81dfa4),
+                      width: 3,
+                    ),
+                  ),
+                  child: _buildlist(),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -37,14 +63,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Widget _buildlist() => ListView(
-    children: [
-      _tree('Seoul, Korea', '220213'),
-      _tree('Daejeon, Korea', '220214'),
-    ]
-);
+Widget _buildlist() => ListView(children: [
+  _tree('Seoul, Korea', '220213'),
+  _tree('Daejeon, Korea', '220214'),
+]);
 
 ListTile _tree(String title, String subtitle) => ListTile(
+  leading : IconButton(icon : Icon(Icons.forest_rounded), onPressed : (){}),
   title: Text(title),
   subtitle: Text(subtitle),
 );
@@ -69,7 +94,7 @@ class MapSampleState extends State<MapSample> {
           position: LatLng(37.5642135, 127.0016985),
           draggable: true,
           icon:
-              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+          BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
           infoWindow: InfoWindow(
             title: 'My First Tree',
             snippet: '220213',
