@@ -33,18 +33,6 @@ class MyApp extends StatelessWidget {
                 child: Container(
                   child: MapSample(),
                 )),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: FloatingActionButton(
-                  onPressed: _tree,
-                  materialTapTargetSize: MaterialTapTargetSize.padded,
-                  backgroundColor: Colors.green,
-                  child: const Icon(Icons.search, size: 36.0),
-                ),
-              ),
-            ),
           ],
         ),
       ),
@@ -74,6 +62,7 @@ class MapSampleState extends State<MapSample> {
     zoom: 11.5,
   );
 
+
   Set<Marker> _createMarker() {
     return {
       Marker(
@@ -95,8 +84,6 @@ class MapSampleState extends State<MapSample> {
       ),
     };
   }
-
-
 
   @override
   Widget build(BuildContext context) {
