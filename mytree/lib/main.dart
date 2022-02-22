@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyTree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -132,6 +132,59 @@ class MapSampleState extends State<MapSample> {
         initialCameraPosition: _kGooglePlex,
         onCameraMove: (_) {},
         myLocationButtonEnabled: false,
+      ),
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Navigation Bar',
+      theme: ThemeData(primaryColor: Colors.white),
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 4,
+        child: Scaffold(
+          body: TabBarView(
+            children: [
+              Text('One'),
+              Text('Two'),
+              Text('Three'),
+              MyTree(),
+            ],
+          ),
+          bottomNavigationBar: Container(
+            child: TabBar(
+              labelColor: Colors.black,
+              unselectedLabelColor: Colors.grey,
+              indicatorColor: Colors.black,
+              indicatorSize: TabBarIndicatorSize.label,
+              indicatorWeight: 2,
+              tabs: [
+                Tab(
+                  icon: Icon(Icons.adb),
+                  text: 'one',
+                ),
+                Tab(
+                  icon: Icon(Icons.adb),
+                  text: 'two',
+                ),
+                Tab(
+                  icon: Icon(Icons.adb),
+                  text: 'three',
+                ),
+                Tab(
+                  icon: Icon(Icons.adb),
+                  text: 'MyTree',
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
