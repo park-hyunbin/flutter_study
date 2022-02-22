@@ -16,8 +16,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('My tree'),
-        ),
+        title: Text(
+        'My tree',
+        style: TextStyle(
+        color: Color(0xff615E5C),
+    fontWeight: FontWeight.bold,
+    fontSize: 30
+    ),
+    ),
+    backgroundColor: Colors.white24,
+    elevation: 0.0,
+    leading: IconButton(
+    icon: Icon(Icons.account_circle),
+    color: Colors.lightBlue,
+    iconSize: 40,
+    onPressed: (){},
+    ),),
         body: Column(
           children: [
             Padding(
